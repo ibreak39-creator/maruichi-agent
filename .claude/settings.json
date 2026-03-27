@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(mkdir:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Skill(setup-org)",
+      "Skill(status-report)",
+      "Skill(task-request)",
+      "Read(//c/Users/81804/product/2nd-Brain/00_システム/00_UserProfile/**)",
+      "Read(//c/Users/81804/product/2nd-Brain/**)",
+      "Edit(/.claude/skills/interesting-content/**)",
+      "Read(//temp/readonly/**)",
+      "Edit(/.claude/skills/x-article/**)",
+      "WebSearch",
+      "Bash(node -e \":*)",
+      "Read(//c/Users/81804/**)",
+      "Bash(find /c/Users/81804 -name *.md -path */skills/*)",
+      "Bash(find /c/Users/81804/product/2nd-Brain/.claude/skills -name *.md)",
+      "Edit(/.claude/skills/regular-newsletter/**)",
+      "Bash(python3 -c \":*)"
+    ],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": [
+      "C:\\Users\\81804\\product\\2nd-Brain\\.claude\\skills",
+      "c:\\Users\\81804\\product\\maruichi-agent\\.claude\\skills",
+      "c:\\Users\\81804\\product\\maruichi-agent\\.claude\\skills\\interesting-content",
+      "c:\\Users\\81804\\product\\maruichi-agent\\ai-agent-organization\\workspace",
+      "C:\\Users\\81804\\product\\maruichi-agent\\ai-agent-organization\\workspace"
+    ]
+  },
+  "outputStyle": "default"
+}
