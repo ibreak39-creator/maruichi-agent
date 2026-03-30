@@ -1,27 +1,7 @@
 # AI Agent Organization - Agent Teams 設定
 
-このプロジェクトは、AIエージェント組織を構築・運用するためのテンプレートです。
-Claude Code Agent Teams（Opus 4.6）に最適化された構成で動作します。
-
----
-
-## チーム構成
-
-| 役割 | エージェント（名前） | subagent_type | 担当領域 |
-|------|---------------------|---------------|----------|
-| Team Lead | BOSS（司） | BOSS | タスク管理・チーム調整・戦略判断 |
-| Teammate | NOTE_CREATOR（紡） | NOTE_CREATOR | note記事作成 |
-| Teammate | ARTICLE_REVIEWER（冴） | ARTICLE_REVIEWER | 記事レビュー・評価 |
-| Teammate | ARTICLE_STYLIST（彩葉） | ARTICLE_STYLIST | 記事装飾・CTA配置 |
-| Teammate | DATA_ANALYST（鑑） | DATA_ANALYST | データ収集・分析 |
-| Teammate | X_POST_CREATOR（響也） | X_POST_CREATOR | X投稿作成 |
-| Teammate | ARCHITECT（匠） | ARCHITECT | プロンプト設計・スキル作成 |
-| Teammate | GENESIS（創） | GENESIS | エージェント設計・作成 |
-| Teammate | GUNSHI（官兵衛） | GUNSHI | 副業全体戦略・参謀コンサルタント |
-| Teammate | OVERSEER（整） | OVERSEER | ディレクトリ構造管理・監査 |
-| Teammate | MAIL_CREATOR（文） | MAIL_CREATOR | メールマガジン作成（通常・セールス） |
-| Teammate | LETTER_CREATOR（筆） | LETTER_CREATOR | セールスレター作成（商品LP・販売ページ） |
-| Teammate | DAILY_STARTER（朝） | DAILY_STARTER | メルマガ＋X投稿の朝の自動生成 |
+Claude Code Agent Teams（Opus 4.6）に最適化されたまるいちのコンテンツ生成組織。
+エージェント: BOSS / NOTE_CREATOR / ARTICLE_REVIEWER / ARTICLE_STYLIST / DATA_ANALYST / X_POST_CREATOR / ARCHITECT / GENESIS / GUNSHI / OVERSEER / MAIL_CREATOR / LETTER_CREATOR / DAILY_STARTER / TODAY_FINISHER / PAID_NOTE_CREATOR
 
 ---
 
@@ -66,6 +46,8 @@ Claude Code Agent Teams（Opus 4.6）に最適化された構成で動作しま�
 | セールスメルマガ、ステップメール、3日間メール、セールスシナリオ | MAIL_CREATOR | `sales-newsletter` |
 | レター作成、セールスレター、販売ページ、LP文章、レターを書いて | LETTER_CREATOR | `letter-creation` |
 | /todaystart、今日のコンテンツ、朝のスタート、今日のコンテンツ作成 | DAILY_STARTER | `regular-newsletter` + X投稿 |
+| /today-finish、日誌をまとめて、今日を締める、音声ログを分析して、おやすみ | TODAY_FINISHER | `today-finish` |
+| 低単価note、低単価note企画、低単価noteを作りたい、売れるnoteを作って | PAID_NOTE_CREATOR | `paid-note-planning` → `note-creation` → `paid-note-sales-page` |
 
 ---
 
@@ -149,9 +131,24 @@ Claude Code Agent Teams（Opus 4.6）に最適化された構成で動作しま�
 
 ## 共通品質基準
 
-### knowledge/ 参照ルール
-- タスク開始時に該当エージェントの `learnings.md` を確認（weight 5以上は最優先）
-- `shared/knowledge/` の組織共通知識を参照
+### 着手前の必読ルール（コンテンツ生成）
+
+**コンテンツを生成する前に、以下を必ず読んでから着手すること。読まずに生成を始めてはいけない。**
+
+| タスク | 必読ファイル |
+|--------|------------|
+| 全コンテンツ共通 | 担当エージェントの `learnings.md`（weight 5以上は最優先） |
+| X投稿・メルマガ・note記事の書き出し設計 | `ai-agent-organization/shared/knowledge/hook-design-principles.md` |
+| note記事全般 | `ai-agent-organization/shared/knowledge/noteの心得.md` |
+| 全コンテンツの最終仕上げ | `ai-agent-organization/shared/knowledge/anti-ai-rewrite-master.md`（AIっぽさ除去） |
+
+### output-check スコア基準
+
+output-check 実行後、スコアに応じて以下の対応を取ること:
+
+- **50点以上**: 提出可
+- **40〜49点**: TOP3アクションを修正してから提出
+- **39点以下**: 再生成必須。そのまま提出禁止
 
 ### 成果物の保存
 - 保存先: `ai-agent-organization/workspace/YYYY-MM-DD_NN/[type]-[topic].md`
@@ -159,35 +156,20 @@ Claude Code Agent Teams（Opus 4.6）に最適化された構成で動作しま�
   - 同じ依頼内の複数成果物は同じセッションフォルダ（`YYYY-MM-DD_NN/`）に格納
 - タスク完了時に自動保存
 
+### 分析結果の保存・参照（必須）
+- **分析タスク（競合分析・X分析・アカウント分析・データ分析など）の結果は必ず `ai-agent-organization/shared/analysis/` に保存する**
+  - ファイル名: `analysis-[対象]-[日付].md`（例: `analysis-neko-shacho-20260328.md`）
+- **分析を行う前に必ず `shared/analysis/` を確認し、同じ対象の過去分析があれば差分更新する**
+  - 同一対象の分析が複数ある場合は最新ファイルを参照・更新（重複ファイルは作らない）
+- 分析結果はworkspaceにも保存してよいが、`shared/analysis/` への保存が一次保存先
+
+### アウトプット後の必須チェック
+- X投稿・メルマガ・note記事・セールスレター等のアウトプットを生成したら、**必ず `output-check` スキルを実行してから最終出力すること**
+- 対象スキル: `x-short-post` / `x-long-post` / `x-article` / `x-note-promo` / `note-creation` / `maruichi-merumaga` / `regular-newsletter` / `sales-newsletter` / `letter-creation` / `paid-note-sales-page`
+- チェック結果のTOP3アクションに基づき修正してから、ユーザーに最終成果物を渡すこと
+- **「小学3年生でも読んで分かるか」を必ず自問すること。難しい言葉・専門用語・長い文は使わない**
+
 ### フィードバックサイクル
 1. タスク完了後、ユーザーにフィードバックを依頼
 2. フィードバックを `learnings.md` に記録（重みづけシステム対応）
 3. `HISTORY.md` に履歴を記録
-
----
-
-## ディレクトリ構造
-
-```
-ai-agent-organization/
-├── organization/    # エージェント別知識ベース
-├── inbox/           # 未処理タスク投入先
-├── system/          # システム設定（config.yaml）
-├── shared/
-│   ├── knowledge/   # 組織共通知識
-│   └── templates/
-└── workspace/       # 成果物保存先
-```
-
----
-
-## クイックスタート
-
-### 初回セットアップ
-「組織を作って」と話しかけると `setup-org` スキルが自動起動し、ヒアリング → 全ファイル生成まで一気通貫で進める。
-
-1. 「〇〇の組織を作って」 → 組織構築
-2. 「タスク依頼: [内容]」 → タスク実行（例: `claude "note記事を書いて：副業の始め方"`）
-3. 「状況報告して」 → ステータス確認
-4. 「今日何するべき？」 → BOSS + GUNSHI がデイリータスクを提案
-5. 「戦略を考えたい」 → GUNSHI がビジネス戦略全体を壁打ち

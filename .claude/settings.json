@@ -10,7 +10,6 @@
       "Skill(task-request)",
       "Read(//c/Users/81804/product/2nd-Brain/00_システム/00_UserProfile/**)",
       "Read(//c/Users/81804/product/2nd-Brain/**)",
-      "Edit(/.claude/skills/interesting-content/**)",
       "Read(//temp/readonly/**)",
       "Edit(/.claude/skills/x-article/**)",
       "WebSearch",
@@ -26,7 +25,6 @@
     "additionalDirectories": [
       "C:\\Users\\81804\\product\\2nd-Brain\\.claude\\skills",
       "c:\\Users\\81804\\product\\maruichi-agent\\.claude\\skills",
-      "c:\\Users\\81804\\product\\maruichi-agent\\.claude\\skills\\interesting-content",
       "c:\\Users\\81804\\product\\maruichi-agent\\ai-agent-organization\\workspace",
       "C:\\Users\\81804\\product\\maruichi-agent\\ai-agent-organization\\workspace"
     ]

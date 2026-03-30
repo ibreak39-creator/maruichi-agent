@@ -185,6 +185,12 @@ description: ノウハウをX長文投稿として分かりやすく発信する
 - 読者が「自分のことだ」とドキッとする表現になっているか、書いた後に自問する
 - 「他人事の観察」で始まっていないか確認する
 
+# 自分の実績・実体験（必須）
+投稿には必ず自分の実績・実体験・エピソードを1箇所入れる。
+使えるネタは以下から選ぶ（優先順）:
+1. `ai-agent-organization/shared/knowledge/profile-achievements.md`（実績・権威性の数字）
+2. `ai-agent-organization/shared/knowledge/profile-origin-story.md`（原体験・どん底・転換点）
+
 # 補足情報:
 - no yapping
 - ツイートだけ絶対に出力してください。

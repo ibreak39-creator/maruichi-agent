@@ -1,0 +1,16 @@
+meta:
+  agent_id: TODAY_FINISHER
+  agent_name: 終（おわり）
+  role: 夜の日誌締め・ネタ帳転記
+  updated_at: "2026-03-28"
+
+statistics:
+  total_tasks: 0
+  approved_tasks: 0
+  revised_tasks: 0
+  approval_rate: 0
+  current_streak: 0
+  best_streak: 0
+
+skills:
+  - today-finish
