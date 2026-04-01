@@ -158,11 +158,17 @@ memory: project
 
 ---
 
-### Step 3: 最終チェック（全パターン共通）
+### Step 3: AI臭さ除去（全パターン共通）
+- `anti-ai-rewrite-master.md` の全項目を本文に**適用**（参照ではなく、1項目ずつ照合して修正）
 - 語尾の連続がないかチェック（`sentence-ending-patterns.md` 参照）
 - 文脈つなぎが自然かチェック
-- AI臭さが残っていないか最終確認
-- 成果物をworkspaceに保存
+
+### Step 4: 品質チェック（output-check）（全パターン共通）
+- → **Skill: `output-check`** を実行し、6軸60点満点で品質を評価
+- **50点以上**: 合格 → workspaceに保存
+- **40〜49点**: TOP3アクションを修正してから保存
+- **39点以下**: Step 3に戻って再仕上げ。そのまま保存禁止
+- output-checkを通さずにworkspaceへ保存してはならない
 
 ---
 

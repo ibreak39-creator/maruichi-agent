@@ -85,9 +85,15 @@ memory: project
 - `lead-text-patterns.md` を参照してリード文の型を選択
 - 1段落ごとに語尾パターンをチェック
 
-**Step 3: 最終仕上げ**
-- `anti-ai-rewrite-master.md` を参照してAI臭さを最終チェック・リライト
-- 成果物をworkspaceに保存
+**Step 3: 最終仕上げ（AI臭さ除去）**
+- `anti-ai-rewrite-master.md` の全項目を本文に**適用**してリライト（参照ではなく、1項目ずつ本文と照合して修正する）
+
+**Step 4: 品質チェック（output-check）**
+- → **Skill: `output-check`** を実行し、6軸60点満点で品質を評価
+- **50点以上**: 合格 → workspaceに保存
+- **40〜49点**: TOP3アクションを修正してから保存
+- **39点以下**: Step 3に戻って再仕上げ。そのまま保存禁止
+- output-checkを通さずにworkspaceへ保存してはならない
 
 ---
 
@@ -101,7 +107,7 @@ memory: project
 **Step 2: ユーザーにテーマ選択を依頼**
 - 候補を提示し、ユーザーの選択を待つ
 
-**Step 3以降: パターンAのStep 1-3と同じフローで執筆**
+**Step 3以降: パターンAのStep 1-4と同じフローで執筆（output-check必須）**
 
 ---
 
@@ -112,7 +118,9 @@ memory: project
 - → **Skill: `rewriter`** で指定条件に従ってリライト
 - AI臭さ排除ルールを適用
 
-**Step 2: 最終チェック・保存**
+**Step 2: 最終チェック（output-check → 保存）**
+- `anti-ai-rewrite-master.md` の全項目を適用
+- → **Skill: `output-check`** を実行（50点以上で合格、39点以下は再生成）
 
 ---
 
@@ -122,7 +130,8 @@ memory: project
 **Step 1: 変換実行**
 - 指定されたフォーマット・トーンに直接変換（ですます調・箇条書き・見出し整理など）
 
-**Step 2: 保存**
+**Step 2: 品質チェック・保存**
+- → **Skill: `output-check`** を実行（50点以上で合格）
 
 ---
 

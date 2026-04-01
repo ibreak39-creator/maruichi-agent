@@ -131,6 +131,46 @@ Claude Code Agent Teams（Opus 4.6）に最適化されたまるいちのコン�
 
 ## 共通品質基準
 
+### 品質評価の統一基準（全エージェント必須）
+
+**組織全体で唯一の合否判定基準は `output-check`（6軸60点満点）である。**
+
+```
+【品質評価の3層構造】
+
+Layer 1: 着手前チェック（必読ファイル）
+  → 品質の土台を作る。生成前に必ず実施
+
+Layer 2: エージェント固有チェック（専門領域の事前検証）
+  → MAIL_CREATORの6軸セルフレビュー、ARTICLE_REVIEWERのペルソナレビュー等
+  → 各エージェントの専門性に基づく事前品質向上ステップ
+  → output-checkの「代替」ではなく「前段」
+
+Layer 3: output-check（組織統一の最終品質ゲート）★必須★
+  → 6軸60点満点。全コンテンツ系エージェントが保存前に必ず実行
+  → これを通過しないコンテンツはworkspaceに保存してはならない
+```
+
+**対象エージェント（output-check必須）:**
+NOTE_CREATOR / X_POST_CREATOR / MAIL_CREATOR / ARTICLE_STYLIST / PAID_NOTE_CREATOR / LETTER_CREATOR / DAILY_STARTER
+
+**output-checkの6軸:**
+| 軸 | 内容 | 配点 |
+|----|------|------|
+| 軸1 | 価値観との整合（Anti-patterns違反チェック） | 10点 |
+| 軸2 | 文体チェック（まるいちの声 + AIっぽさ除去） | 10点 |
+| 軸3 | ターゲット適合チェック | 10点 |
+| 軸4 | 面白さ3要素（共感・発見・分かりやすさ） | 10点 |
+| 軸5 | 冒頭訴求チェック（7つの訴求要素） | 10点 |
+| 軸6 | 反対意見チェック（The Skeptic） | 10点 |
+
+**他の品質チェックとの関係:**
+| チェック | 役割 | output-checkとの関係 |
+|---------|------|-------------------|
+| MAIL_CREATORの6軸セルフレビュー | メルマガ専門の事前チェック | output-checkの**前に**実施。代替不可 |
+| ARTICLE_REVIEWERのcontent-review | 深い分析・改善提案（10点×ペルソナ） | 改善目的の補完ツール。output-checkの代替不可 |
+| anti-ai-rewrite-master.md | AI臭さ除去の適用 | output-checkの**前に**適用。軸2のスコアに直結 |
+
 ### 着手前の必読ルール（コンテンツ生成）
 
 **コンテンツを生成する前に、以下を必ず読んでから着手すること。読まずに生成を始めてはいけない。**
@@ -140,7 +180,7 @@ Claude Code Agent Teams（Opus 4.6）に最適化されたまるいちのコン�
 | 全コンテンツ共通 | 担当エージェントの `learnings.md`（weight 5以上は最優先） |
 | X投稿・メルマガ・note記事の書き出し設計 | `ai-agent-organization/shared/knowledge/hook-design-principles.md` |
 | note記事全般 | `ai-agent-organization/shared/knowledge/noteの心得.md` |
-| 全コンテンツの最終仕上げ | `ai-agent-organization/shared/knowledge/anti-ai-rewrite-master.md`（AIっぽさ除去） |
+| 全コンテンツの最終仕上げ | `ai-agent-organization/shared/knowledge/anti-ai-rewrite-master.md`（AIっぽさ除去。**参照ではなく全項目を本文に適用すること**） |
 
 ### output-check スコア基準
 
