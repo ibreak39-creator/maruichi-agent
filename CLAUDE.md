@@ -133,7 +133,7 @@ Claude Code Agent Teams（Opus 4.6）に最適化されたまるいちのコン�
 
 ### 品質評価の統一基準（全エージェント必須）
 
-**組織全体で唯一の合否判定基準は `output-check`（6軸60点満点）である。**
+**組織全体で唯一の合否判定基準は `output-check`（8軸80点満点）である。**
 
 ```
 【品質評価の3層構造】
@@ -147,14 +147,14 @@ Layer 2: エージェント固有チェック（専門領域の事前検証）
   → output-checkの「代替」ではなく「前段」
 
 Layer 3: output-check（組織統一の最終品質ゲート）★必須★
-  → 6軸60点満点。全コンテンツ系エージェントが保存前に必ず実行
+  → 8軸80点満点。全コンテンツ系エージェントが保存前に必ず実行
   → これを通過しないコンテンツはworkspaceに保存してはならない
 ```
 
 **対象エージェント（output-check必須）:**
 NOTE_CREATOR / X_POST_CREATOR / MAIL_CREATOR / ARTICLE_STYLIST / PAID_NOTE_CREATOR / LETTER_CREATOR / DAILY_STARTER
 
-**output-checkの6軸:**
+**output-checkの8軸:**
 | 軸 | 内容 | 配点 |
 |----|------|------|
 | 軸1 | 価値観との整合（Anti-patterns違反チェック） | 10点 |
@@ -163,13 +163,15 @@ NOTE_CREATOR / X_POST_CREATOR / MAIL_CREATOR / ARTICLE_STYLIST / PAID_NOTE_CREAT
 | 軸4 | 面白さ3要素（共感・発見・分かりやすさ） | 10点 |
 | 軸5 | 冒頭訴求チェック（7つの訴求要素） | 10点 |
 | 軸6 | 反対意見チェック（The Skeptic） | 10点 |
+| 軸7 | 論理・文脈の一貫性（「どういうこと？」とならないか） | 10点 |
+| 軸8 | 口語・語りかけ（友達に話しかける口調か） | 10点 |
 
 **他の品質チェックとの関係:**
 | チェック | 役割 | output-checkとの関係 |
 |---------|------|-------------------|
 | MAIL_CREATORの6軸セルフレビュー | メルマガ専門の事前チェック | output-checkの**前に**実施。代替不可 |
 | ARTICLE_REVIEWERのcontent-review | 深い分析・改善提案（10点×ペルソナ） | 改善目的の補完ツール。output-checkの代替不可 |
-| anti-ai-rewrite-master.md | AI臭さ除去の適用 | output-checkの**前に**適用。軸2のスコアに直結 |
+| anti-ai-rewrite-master.md | AI臭さ除去の適用 | output-checkの**前に**適用。軸2・軸8のスコアに直結 |
 
 ### 着手前の必読ルール（コンテンツ生成）
 
@@ -186,9 +188,9 @@ NOTE_CREATOR / X_POST_CREATOR / MAIL_CREATOR / ARTICLE_STYLIST / PAID_NOTE_CREAT
 
 output-check 実行後、スコアに応じて以下の対応を取ること:
 
-- **50点以上**: 提出可
-- **40〜49点**: TOP3アクションを修正してから提出
-- **39点以下**: 再生成必須。そのまま提出禁止
+- **67点以上**: 提出可
+- **53〜66点**: TOP3アクションを修正してから提出
+- **52点以下**: 再生成必須。そのまま提出禁止
 
 ### 成果物の保存
 - 保存先: `ai-agent-organization/workspace/YYYY-MM-DD_NN/[type]-[topic].md`

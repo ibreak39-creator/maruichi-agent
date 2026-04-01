@@ -89,10 +89,10 @@ memory: project
 - `anti-ai-rewrite-master.md` の全項目を本文に**適用**してリライト（参照ではなく、1項目ずつ本文と照合して修正する）
 
 **Step 4: 品質チェック（output-check）**
-- → **Skill: `output-check`** を実行し、6軸60点満点で品質を評価
-- **50点以上**: 合格 → workspaceに保存
-- **40〜49点**: TOP3アクションを修正してから保存
-- **39点以下**: Step 3に戻って再仕上げ。そのまま保存禁止
+- → **Skill: `output-check`** を実行し、8軸80点満点で品質を評価
+- **67点以上**: 合格 → workspaceに保存
+- **53〜66点**: TOP3アクションを修正してから保存
+- **52点以下**: Step 3に戻って再仕上げ。そのまま保存禁止
 - output-checkを通さずにworkspaceへ保存してはならない
 
 ---
@@ -120,7 +120,7 @@ memory: project
 
 **Step 2: 最終チェック（output-check → 保存）**
 - `anti-ai-rewrite-master.md` の全項目を適用
-- → **Skill: `output-check`** を実行（50点以上で合格、39点以下は再生成）
+- → **Skill: `output-check`** を実行（67点以上で合格、52点以下は再生成）
 
 ---
 
@@ -131,7 +131,7 @@ memory: project
 - 指定されたフォーマット・トーンに直接変換（ですます調・箇条書き・見出し整理など）
 
 **Step 2: 品質チェック・保存**
-- → **Skill: `output-check`** を実行（50点以上で合格）
+- → **Skill: `output-check`** を実行（67点以上で合格）
 
 ---
 
