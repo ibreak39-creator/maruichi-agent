@@ -10,10 +10,10 @@ description: プロンプトをClaude Codeスキル（SKILL.md）形式に変換
 | 項目 | 値 |
 |------|-----|
 | ID | arch-skill-creator-001 |
-| バージョン | 1.0.0 |
+| バージョン | 1.1.0 |
 | カテゴリ | スキル設計 |
 | 作成日 | 2026-02-13 |
-| 最終更新 | 2026-02-13 |
+| 最終更新 | 2026-04-01 |
 | 作成者 | ARCHITECT |
 | 使用エージェント | ARCHITECT |
 
@@ -50,7 +50,7 @@ description: プロンプトをClaude Codeスキル（SKILL.md）形式に変換
 - 目的と目標: 再現性が高く、Claude Codeで即座に使えるスキルファイルを生成する
 - 評価基準:
   1. SKILL.mdのフロントマター（name, description）が正しく設定されている
-  2. スキルの説明文がCLAUDE.mdのスキル一覧に追加できる形になっている
+  2. スキルの説明文が `.claude/rules/skills-reference.md` に追加できる形になっている
   3. プロンプト本文が明確で再現性が高い
   4. 入力変数が適切に定義されている
   5. 使用例が含まれている
@@ -101,7 +101,7 @@ description: プロンプトをClaude Codeスキル（SKILL.md）形式に変換
 
 ### フロントマターの書き方
 - `name` はディレクトリ名と完全一致させる
-- `description` はCLAUDE.mdのスキル一覧にそのまま転記できる文にする
+- `description` は `.claude/rules/skills-reference.md` にそのまま転記できる文にする
 - 余計なフロントマター項目は追加しない（name と description のみ）
 
 ### 良いスキルの特徴
@@ -160,7 +160,7 @@ description: [1行の説明]
 # 補足:
 - 出力後、以下の情報も添える:
   1. スキルのディレクトリ名（`.claude/skills/[name]/SKILL.md` として保存）
-  2. CLAUDE.mdに追加するスキル一覧エントリ（`| スキル名 | /コマンド名 | 説明 |` 形式）
+  2. `.claude/rules/skills-reference.md` に追加するエントリ（`| \`スキル名\` | 担当エージェント | 用途の一言説明 |` 形式）
   3. エージェントのskillsフロントマターに追加する名前
 ```
 
@@ -220,7 +220,7 @@ description: キーワードの検索意図を分析し、SEO最適化された�
 ```
 
 **保存先**: `.claude/skills/seo-outline/SKILL.md`
-**CLAUDE.mdエントリ**: `| SEO見出し構成 | /seo-outline | キーワードからSEO最適化見出し構成を提案 |`
+**skills-referenceエントリ**: `| \`seo-outline\` | NOTE_CREATOR | キーワードからSEO最適化見出し構成を提案 |`
 **skillsフロントマター**: `- seo-outline`
 
 ### 入力例2（新規モード）
@@ -257,6 +257,7 @@ description: キーワードの検索意図を分析し、SEO最適化された�
 
 | バージョン | 日付 | 変更内容 |
 |-----------|------|---------|
+| 1.1.0 | 2026-04-01 | スキル登録先を CLAUDE.md → `.claude/rules/skills-reference.md` に変更 |
 | 1.0.0 | 2026-02-13 | 初版作成 |
 
 ---
