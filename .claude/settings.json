@@ -29,5 +29,28 @@
       "C:\\Users\\81804\\product\\maruichi-agent\\ai-agent-organization\\workspace"
     ]
   },
-  "outputStyle": "default"
+  "outputStyle": "default",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'コンテンツ生成タスクの場合: output-check スキルを実行しましたか？（50点以上で提出可 / 39点以下は再生成必須）'"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import json,os,sys; d=json.loads(os.environ.get('CLAUDE_TOOL_INPUT','{}')); fp=d.get('file_path',''); protected=['.claude/settings.json']; hit=next((p for p in protected if fp.endswith(p)),None); print(json.dumps({'decision':'deny','reason':f'{hit} は保護ファイルです。直接編集せずユーザーに確認してください。'})) if hit else print('{}')\""
+          }
+        ]
+      }
+    ]
+  }
 }

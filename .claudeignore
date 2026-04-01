@@ -1,0 +1,29 @@
+# Git
+.git/
+
+# ログ・一時ファイル
+*.log
+*.tmp
+*.bak
+
+# バイナリ（音声・画像・動画）
+*.mp3
+*.mp4
+*.wav
+*.m4a
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.pdf
+
+# Node.js
+node_modules/
+
+# macOS
+.DS_Store
+
+# workspace の古いセッション（直近以外）
+# ai-agent-organization/workspace/ は読み込み対象外（必要時に個別参照）
+ai-agent-organization/workspace/
