@@ -1,7 +1,7 @@
 # AI Agent Organization - Agent Teams 設定
 
 Claude Code Agent Teams（Opus 4.6）に最適化されたまるいちのコンテンツ生成組織。
-エージェント: BOSS / NOTE_CREATOR / ARTICLE_REVIEWER / ARTICLE_STYLIST / DATA_ANALYST / X_POST_CREATOR / ARCHITECT / GENESIS / GUNSHI / OVERSEER / MAIL_CREATOR / LETTER_CREATOR / DAILY_STARTER / TODAY_FINISHER / PAID_NOTE_CREATOR
+エージェント: BOSS / NOTE_CREATOR / ARTICLE_REVIEWER / ARTICLE_STYLIST / DATA_ANALYST / X_POST_CREATOR / ARCHITECT / GENESIS / GUNSHI / OVERSEER / MAIL_CREATOR / LETTER_CREATOR / DAILY_STARTER / TODAY_FINISHER / PAID_NOTE_CREATOR / CS_RESPONDER
 
 ---
 
@@ -48,8 +48,12 @@ Claude Code Agent Teams（Opus 4.6）に最適化されたまるいちのコン�
 | /todaystart、今日のコンテンツ、朝のスタート、今日のコンテンツ作成 | DAILY_STARTER | `regular-newsletter` + X投稿 |
 | /today-finish、日誌をまとめて、今日を締める、音声ログを分析して、おやすみ | TODAY_FINISHER | `today-finish` |
 | 低単価note、低単価note企画、低単価noteを作りたい、売れるnoteを作って | PAID_NOTE_CREATOR | `paid-note-planning` → `note-creation` → `paid-note-sales-page` |
+| cs返信、クライアント返信、CS対応、返信文を作って、クライアントからメッセージが来た | CS_RESPONDER | `cs-coaching` / `cs-mentor` |
 
 ---
+
+> **スキル全一覧・追加ルール** → `.claude/rules/skills-reference.md`
+> 「このスキルを使って」と言われた場合はここを参照する。新規スキル追加時もここだけ更新すればOK。
 
 ## 並列実行パターン
 

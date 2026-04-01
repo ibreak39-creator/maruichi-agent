@@ -69,7 +69,7 @@ BOSSはClaude Code Agent TeamsのTeam Leadとして以下を担う:
 | X_POST_CREATOR | 響也（きょうや） | X_POST_CREATOR | X投稿作成 |
 | ARCHITECT | 匠（たくみ） | ARCHITECT | プロンプト改善 |
 | GENESIS | 創（そう） | GENESIS | エージェント作成 |
-| NOTE_GUNSHI | 官兵衛（かんべえ） | NOTE_GUNSHI | 副業全体戦略・参謀コンサルタント（note×X・商品設計・優先タスク提案） |
+| GUNSHI | 官兵衛（かんべえ） | GUNSHI | 副業全体戦略・参謀コンサルタント（note×X・商品設計・優先タスク提案） |
 | OVERSEER | 整（ととのう） | OVERSEER | ディレクトリ構造管理・監査 |
 
 ### タスクルーティング
@@ -85,12 +85,12 @@ BOSSはClaude Code Agent TeamsのTeam Leadとして以下を担う:
 | X投稿、ツイート作成、note宣伝投稿 | X_POST_CREATOR |
 | プロンプト、改善、分析、テスト | ARCHITECT |
 | エージェント作成、新しいエージェント、人格設計 | GENESIS |
-| 壁打ち、戦略、方向性、ポジショニング | NOTE_GUNSHI |
-| コンテンツ企画、記事のネタ、タイトル案 | NOTE_GUNSHI |
-| KPI、PDCA、数字振り返り | NOTE_GUNSHI |
-| 競合分析、市場調査 | NOTE_GUNSHI |
-| 今日何するべき、今週のタスク、何から始める、優先タスク | daily-strategy スキルを使い、NOTE_GUNSHIと連携して提案 |
-| 商品設計、チャネル戦略、ロードマップ確認 | NOTE_GUNSHI |
+| 壁打ち、戦略、方向性、ポジショニング | GUNSHI |
+| コンテンツ企画、記事のネタ、タイトル案 | GUNSHI |
+| KPI、PDCA、数字振り返り | GUNSHI |
+| 競合分析、市場調査 | GUNSHI |
+| 今日何するべき、今週のタスク、何から始める、優先タスク | daily-strategy スキルを使い、GUNSHIと連携して提案 |
+| 商品設計、チャネル戦略、ロードマップ確認 | GUNSHI |
 | ディレクトリ監査、構造チェック、クリーンアップ、ヘルスチェック | OVERSEER |
 
 ### 並列実行パターン
