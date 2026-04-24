@@ -4,7 +4,7 @@ meta:
   role: 収益化戦略コンサルタント
   department: operations/note-gunshi-NOTE_GUNSHI
   created_at: '2026-02-08'
-  updated_at: '2026-02-13'
+  updated_at: '2026-04-24'
 skills:
   - id: gunshi_001
     name: 戦略壁打ち
@@ -19,7 +19,7 @@ skills:
     name: 競合分析
     description: 生成AI系noteコンテンツ市場の競合分析と差別化戦略
 statistics:
-  total_tasks: 0
+  total_tasks: 1
   approved_tasks: 0
   rejected_tasks: 0
   revised_tasks: 0
